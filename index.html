@@ -12,7 +12,7 @@
         grid-area: 1 / 1;
       }
       #over {
-        opacity: 0.25;
+        opacity: var(--op, 0.5);
       }
     </style>
   </head>
@@ -21,5 +21,16 @@
       <div id="under"><img src="img_lights.jpeg" /></div>
       <div id="over"><img src="img_mountains.jpeg" /></div>
     </div>
+    <div id="slidecontainer">
+      <input type="range" min="1" max="100" value="50" id="slider" />
+    </div>
+    <script>
+      const slider = document.getElementById("slider");
+      slider.oninput = function () {
+        let op = 1 - slider.value / 100;
+        console.log(op);
+        document.documentElement.style.setProperty("--op", op);
+      };
+    </script>
   </body>
 </html>
